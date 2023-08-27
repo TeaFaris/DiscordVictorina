@@ -2,6 +2,7 @@
 using Discord.Commands;
 using Discord.Interactions;
 using Discord.WebSocket;
+using DiscordVictorina;
 using DiscordVictorina.Configuration;
 using DiscordVictorina.Handlers;
 using DiscordVictorina.Services.SlashCommandsRegisterServices;
@@ -30,6 +31,9 @@ var discordConfig = new DiscordSocketConfig
 var interactionServiceConfig = new InteractionServiceConfig { DefaultRunMode = Discord.Interactions.RunMode.Async };
 
 builder.Services.AddSingleton(provider => provider);
+
+// Hosted services
+builder.Services.AddHostedService<ApplicationStart>();
 
 // Configurations
 builder.Services.AddSingleton(discordConfig);
