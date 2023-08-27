@@ -3,6 +3,7 @@ using Discord.Commands;
 using Discord.Interactions;
 using Discord.WebSocket;
 using DiscordVictorina.Configuration;
+using DiscordVictorina.Handlers;
 using DiscordVictorina.Services.SlashCommandsRegisterServices;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -39,6 +40,10 @@ builder.Services.AddSingleton<DiscordSocketClient>();
 builder.Services.AddSingleton<CommandService>();
 builder.Services.AddSingleton<InteractionService>();
 builder.Services.AddSingleton<SlashCommandsRegisterService>();
+
+////Handlers
+builder.Services.AddSingleton<InteractionHandler>();
+builder.Services.AddSingleton<SlashCommandHandler>();
 
 var app = builder.Build();
 

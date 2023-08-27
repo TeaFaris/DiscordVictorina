@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DiscordVictorina.Configuration\DiscordVictorina.Configuration.csproj" />
+    <ProjectReference Include="..\DiscordVictorina.Handlers\DiscordVictorina.Handlers.csproj" />
     <ProjectReference Include="..\DiscordVictorina.Services\DiscordVictorina.Services.csproj" />
   </ItemGroup>
 
