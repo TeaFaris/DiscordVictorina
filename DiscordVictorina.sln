@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34018.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordVictorina", "DiscordVictorina\DiscordVictorina.csproj", "{B519F584-70D4-4894-9E54-FA50B097A4BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordVictorina.Configuration", "DiscordVictorina.Configuration\DiscordVictorina.Configuration.csproj", "{FBC49289-89F8-4A77-9101-447BE0D9A73D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B519F584-70D4-4894-9E54-FA50B097A4BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B519F584-70D4-4894-9E54-FA50B097A4BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B519F584-70D4-4894-9E54-FA50B097A4BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B519F584-70D4-4894-9E54-FA50B097A4BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBC49289-89F8-4A77-9101-447BE0D9A73D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBC49289-89F8-4A77-9101-447BE0D9A73D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBC49289-89F8-4A77-9101-447BE0D9A73D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBC49289-89F8-4A77-9101-447BE0D9A73D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E33D05F3-AE3B-40E4-B439-BF727C07DB63}
+	EndGlobalSection
+EndGlobal
