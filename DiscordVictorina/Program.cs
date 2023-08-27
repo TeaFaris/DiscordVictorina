@@ -1,12 +1,13 @@
-﻿using Discord.Interactions;
+﻿using Discord;
+using Discord.Commands;
+using Discord.Interactions;
 using Discord.WebSocket;
-using Discord;
 using DiscordVictorina.Configuration;
+using DiscordVictorina.Services.SlashCommandsRegisterServices;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using OGA.AppSettings.Writeable.JSONConfig;
-using Microsoft.Extensions.DependencyInjection;
-using Discord.Commands;
 
 var builder = Host.CreateApplicationBuilder(args);
 
@@ -37,6 +38,7 @@ builder.Services.AddSingleton(interactionServiceConfig);
 builder.Services.AddSingleton<DiscordSocketClient>();
 builder.Services.AddSingleton<CommandService>();
 builder.Services.AddSingleton<InteractionService>();
+builder.Services.AddSingleton<SlashCommandsRegisterService>();
 
 var app = builder.Build();
 

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordVictorina", "Discord
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordVictorina.Configuration", "DiscordVictorina.Configuration\DiscordVictorina.Configuration.csproj", "{FBC49289-89F8-4A77-9101-447BE0D9A73D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordVictorina.Services", "DiscordVictorina.Services\DiscordVictorina.Services.csproj", "{127C6A36-661B-4BEA-9343-31406E494BB4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FBC49289-89F8-4A77-9101-447BE0D9A73D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBC49289-89F8-4A77-9101-447BE0D9A73D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBC49289-89F8-4A77-9101-447BE0D9A73D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{127C6A36-661B-4BEA-9343-31406E494BB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{127C6A36-661B-4BEA-9343-31406E494BB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{127C6A36-661B-4BEA-9343-31406E494BB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{127C6A36-661B-4BEA-9343-31406E494BB4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
