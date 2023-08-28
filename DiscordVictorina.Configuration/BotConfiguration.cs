@@ -9,5 +9,7 @@
 		public ulong GuildId { get; init; }
 
 		public ulong ChannelId { get; init; }
+
+		public Victorina Victorina { get; set; } = null!;
 	}
 }

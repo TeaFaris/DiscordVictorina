@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordVictorina.Configurat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordVictorina.Services", "DiscordVictorina.Services\DiscordVictorina.Services.csproj", "{127C6A36-661B-4BEA-9343-31406E494BB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordVictorina.Handlers", "DiscordVictorina.Handlers\DiscordVictorina.Handlers.csproj", "{7FFED14C-9827-4C09-8059-96B647EBAB73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordVictorina.Handlers", "DiscordVictorina.Handlers\DiscordVictorina.Handlers.csproj", "{7FFED14C-9827-4C09-8059-96B647EBAB73}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordVictorina.Controllers", "DiscordVictorina.Controllers\DiscordVictorina.Controllers.csproj", "{6F41DD68-B8E4-44ED-AA0E-540A304CCCE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordVictorina.Controllers", "DiscordVictorina.Controllers\DiscordVictorina.Controllers.csproj", "{6F41DD68-B8E4-44ED-AA0E-540A304CCCE4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
