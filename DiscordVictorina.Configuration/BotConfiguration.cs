@@ -1,6 +1,4 @@
-﻿using DiscordVictorina.Models;
-
-namespace DiscordVictorina.Configuration
+﻿namespace DiscordVictorina.Configuration
 {
 	public class BotConfiguration
 	{
@@ -12,6 +10,6 @@ namespace DiscordVictorina.Configuration
 
 		public ulong ChannelId { get; init; }
 
-		public List<Question> Questions { get; init; } = null!;
+		public Victorina Victorina { get; set; } = null!;
 	}
 }
