@@ -16,8 +16,10 @@ var builder = Host.CreateApplicationBuilder(args);
 builder.Configuration
 	.AddWriteableJsonFile("appsettings.json");
 
+#if DEBUG
 builder.Configuration
 	.AddUserSecrets(typeof(Program).Assembly);
+#endif
 
 builder.Services
 	.ConfigureWritable<BotConfiguration>(builder.Configuration.GetSection("Bot"));
