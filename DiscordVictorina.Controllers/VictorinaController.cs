@@ -49,9 +49,16 @@ namespace DiscordVictorina.Controllers
 				.WithTitle(config.Value.Victorina.Name)
 				.WithCustomId(nameof(AnsweredVictorina));
 
-			for (int i = 0; i < config.Value.Victorina.Questions.Count; i++)
+			List<Question> questions = config
+				.Value
+				.Victorina
+				.Questions
+				.Where(x => !string.IsNullOrEmpty(x.Value))
+				.ToList();
+
+			for (int i = 0; i < questions.Count; i++)
 			{
-				Question question = config.Value.Victorina.Questions[i];
+				Question question = questions[i];
 
 				bool fitInHeader = question.Value.Length <= 45;
 
@@ -76,7 +83,13 @@ namespace DiscordVictorina.Controllers
 				return;
 			}
 
-			var questions = config.Value.Victorina.Questions;
+			var questions = config
+				.Value
+				.Victorina
+				.Questions
+				.Where(x => !string.IsNullOrEmpty(x.Value))
+				.ToList();
+
 			var answersString = arg.Data.Components.ToArray();
 
 			var answers = new List<QuestionAnswer>();
@@ -137,7 +150,7 @@ namespace DiscordVictorina.Controllers
 				return;
 			}
 
-			if(screenshot.ContentType is not "image/png" or not "image/jpeg")
+			if(screenshot.ContentType is not "image/png" and not "image/jpeg")
 			{
 				await RespondAsync("Отправьте картинку формата .png, .jpg или .jpeg");
 				return;

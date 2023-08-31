@@ -4,7 +4,7 @@
 	{
 		public string Name { get; set; } = null!;
 
-		public DateTime EndTime { get; set; }
+		public DateTimeOffset EndTime { get; set; }
 
 		public List<Question> Questions { get; set; } = null!;
 
