@@ -73,7 +73,7 @@ namespace DiscordVictorina.Controllers
 		}
 
 		[SlashCommand("название", "Меняет название викторины.")]
-		public async Task ChangeVictorinaName([MaxLength(100)] [Summary("Название")] string name)
+		public async Task ChangeVictorinaName([MaxLength(100)][Summary("Название")] string name)
 		{
 			if (!await AdminCheck())
 			{
@@ -121,12 +121,17 @@ namespace DiscordVictorina.Controllers
 					return;
 				}
 
-				config.Update(x => x.Victorina.Questions.Add(new Question
+				config.Update(x =>
 				{
-					Value = question,
-					MaxLength = maxLength,
-					MinLength = minLength,
-				}));
+					x.Victorina.Questions ??= new List<Question>();
+
+					x.Victorina.Questions.Add(new Question
+					{
+						Value = question,
+						MaxLength = maxLength,
+						MinLength = minLength,
+					});
+				});
 
 				await RespondAsync("Успешно добавили вопрос.");
 			}
@@ -166,7 +171,7 @@ namespace DiscordVictorina.Controllers
 					}
 
 					menuBuilder.AddOption((k + 1) + " вопрос", i.ToString(), question.Value.Length > 100 ? question.Value[..97] + "..." : question.Value);
-					
+
 					k++;
 				}
 
