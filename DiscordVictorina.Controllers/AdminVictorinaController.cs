@@ -256,7 +256,7 @@ namespace DiscordVictorina.Controllers
 				return;
 			}
 
-			if (!config.Value.Victorina.Active || config.Value.Victorina.EndTime >= DateTimeOffset.UtcNow)
+			if (!config.Value.Victorina.Active || config.Value.Victorina.EndTime <= DateTimeOffset.UtcNow)
 			{
 				await RespondAsync("Не можем остановить викторину, т.к. она ещё не запущена.");
 			}
