@@ -93,8 +93,11 @@ namespace DiscordVictorina.Controllers
 				return;
 			}
 
-			config.Update(x => x.Victorina.Active = false);
-			config.Update(x => x.Victorina.EndTime = new DateTimeOffset(date.Year, date.Month, date.Day, date.Hour, date.Minute, 0, 0, TimeSpan.Zero));
+			config.Update(x =>
+			{
+				x.Victorina.Active = false;
+				x.Victorina.EndTime = new DateTimeOffset(date.Year, date.Month, date.Day, date.Hour, date.Minute, 0, 0, TimeSpan.Zero);
+			});
 
 			await RespondAsync($"Успешно изменено дату окончания на {date:dd.MM.yyyy HH:mm}.");
 		}
@@ -256,7 +259,7 @@ namespace DiscordVictorina.Controllers
 				return;
 			}
 
-			if (!config.Value.Victorina.Active || config.Value.Victorina.EndTime >= DateTimeOffset.UtcNow)
+			if (!config.Value.Victorina.Active || config.Value.Victorina.EndTime <= DateTimeOffset.UtcNow)
 			{
 				await RespondAsync("Не можем остановить викторину, т.к. она ещё не запущена.");
 			}

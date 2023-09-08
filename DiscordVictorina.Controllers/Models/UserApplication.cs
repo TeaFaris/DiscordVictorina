@@ -11,5 +11,9 @@ namespace DiscordVictorina.Controllers.Models
 		public List<QuestionAnswer> Answers { get; init; } = null!;
 
 		public IAttachment? Screenshot { get; set; }
+
+		public DateTime PublishDate { get; set; }
+
+		public ulong? PostedMessageId { get; set; }
 	}
 }
