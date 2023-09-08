@@ -93,8 +93,11 @@ namespace DiscordVictorina.Controllers
 				return;
 			}
 
-			config.Update(x => x.Victorina.Active = false);
-			config.Update(x => x.Victorina.EndTime = new DateTimeOffset(date.Year, date.Month, date.Day, date.Hour, date.Minute, 0, 0, TimeSpan.Zero));
+			config.Update(x =>
+			{
+				x.Victorina.Active = false;
+				x.Victorina.EndTime = new DateTimeOffset(date.Year, date.Month, date.Day, date.Hour, date.Minute, 0, 0, TimeSpan.Zero);
+			});
 
 			await RespondAsync($"Успешно изменено дату окончания на {date:dd.MM.yyyy HH:mm}.");
 		}

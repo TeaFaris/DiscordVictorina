@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using OGA.AppSettings.Writeable.JSONConfig;
 using System;
 using System.Text;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DiscordVictorina.Controllers
 {
@@ -39,9 +40,14 @@ namespace DiscordVictorina.Controllers
 				return;
 			}
 
-			if(UserApplication.Applications.Exists(x => x.UserId == Context.User.Id))
+			var application = UserApplication.Applications.Find(x => x.UserId == Context.User.Id);
+			DateTime? allowedPublishDate = application?.PublishDate + TimeSpan.FromMinutes(30);
+
+			if (allowedPublishDate >= DateTime.UtcNow)
 			{
-				await RespondAsync("Вы уже отправили свои ответы.");
+				var timeLeftForPublish = allowedPublishDate.Value - DateTime.UtcNow;
+
+				await RespondAsync($"Вы сможете отправить свои ответы через {(int) timeLeftForPublish.TotalMinutes} мин.");
 				return;
 			}
 
@@ -111,8 +117,22 @@ namespace DiscordVictorina.Controllers
 			UserApplication newUserApplication = new()
 			{
 				UserId = arg.User.Id,
-				Answers = answers
+				Answers = answers,
+				PublishDate = DateTime.UtcNow
 			};
+
+			var application = UserApplication.Applications.Find(x => x.UserId == newUserApplication.UserId);
+
+			var guild = discordClient.GetGuild(config.Value.GuildId);
+			var textChannel = guild.GetTextChannel(config.Value.ChannelId);
+
+			if (application?.PostedMessageId is not null)
+			{
+				await textChannel.DeleteMessageAsync(application.PostedMessageId.Value);
+			}
+
+			UserApplication.Applications.RemoveAll(x => x.UserId == newUserApplication.UserId);
+
 			UserApplication.Applications.Add(newUserApplication);
 
 			if (config.Value.Victorina.WithScreenshot)
@@ -156,7 +176,28 @@ namespace DiscordVictorina.Controllers
 				return;
 			}
 
+			var application = UserApplication.Applications.Find(x => x.UserId == Context.User.Id);
+			DateTime? allowedPublishDate = application?.PublishDate + TimeSpan.FromMinutes(5);
+
+			if (allowedPublishDate >= DateTime.UtcNow && userApplication.Screenshot is not null)
+			{
+				var timeLeftForPublish = allowedPublishDate.Value - DateTime.UtcNow;
+
+				await RespondAsync($"Вы сможете отправить свои ответы через {(int)timeLeftForPublish.TotalMinutes} мин.");
+				return;
+			}
+
 			userApplication.Screenshot = screenshot;
+			userApplication.PublishDate = DateTime.UtcNow;
+
+			if (userApplication.PostedMessageId is not null)
+			{
+				await RespondAsync("Скриншот успешно изменён!");
+			}
+			else
+			{
+				await RespondAsync("Ответы успешно отправлены!");
+			}
 
 			await SendToChannel(userApplication);
 		}
@@ -211,7 +252,14 @@ namespace DiscordVictorina.Controllers
 			var guild = discordClient.GetGuild(config.Value.GuildId);
 			var textChannel = guild.GetTextChannel(config.Value.ChannelId);
 
-			await textChannel.SendMessageAsync(embed: embedBuilder.Build());
+			if(application.PostedMessageId is not null)
+			{
+				await textChannel.DeleteMessageAsync(application.PostedMessageId.Value);
+			}
+
+			var postedMessage = await textChannel.SendMessageAsync(embed: embedBuilder.Build());
+
+			application.PostedMessageId = postedMessage.Id;
 
 			if (socketModal is not null)
 			{
